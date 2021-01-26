@@ -15,6 +15,7 @@ from notebook.services.contents.manager import ContentsManager
 from .auth import substituteAsk, substituteEnv, substituteNone
 from .config import Jupyterfs as JupyterfsConfig
 from .fsmanager import FSManager
+from .fsmanager import FsspecManager as FSManager
 from .pathutils import path_first_arg, path_second_arg, path_kwarg, path_old_new
 
 __all__ = ["MetaManager", "MetaManagerHandler"]
@@ -84,7 +85,8 @@ class MetaManager(ContentsManager):
                     managers[_hash] = FSManager(
                         urlSubbed,
                         default_writable=default_writable,
-                        **self._pyfs_kw
+                        **self._pyfs_kw,
+                        **resource.get('kwargs', {})
                     )
                     init = True
 

@@ -11,7 +11,7 @@
     "resource": {
       "description": "Specification for an fs resource",
       "type": "object",
-      "additionalProperties": false,
+      "additionalProperties": true,
       "properties": {
         "name": {
           "description": "Display name of resource",

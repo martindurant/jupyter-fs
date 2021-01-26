@@ -52,11 +52,18 @@ cmdclass.pop('develop')
 
 
 requires = [
+    'jupyterlab>=2.0.0',
+    'notebook>=5.7.0',
+]
+
+fs_requires = [
     'fs>=2.4.11',
     'fs-s3fs>=1.1.1',
     'fs.smbfs>=0.6.3',
-    'jupyterlab>=2.0.0',
-    'notebook>=5.7.0',
+]
+
+fsspec_requires = [
+    "s3fs"
 ]
 
 test_requires = [
@@ -101,7 +108,9 @@ setup(
     packages=find_packages(exclude=('js', 'js.*')),
     install_requires=requires,
     extras_require={
-        'dev': dev_requires
+        'dev': dev_requires,
+        'fs2': fs_requires,
+        "fsspec": fsspec_requires
     },
     include_package_data=True,
     zip_safe=False,
